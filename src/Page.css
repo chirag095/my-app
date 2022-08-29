@@ -1,0 +1,147 @@
+.CookwareMainDiv
+{
+  width: 80%;
+  height:500px;
+  margin: auto;
+  box-shadow: yes;
+}
+.CookwareMainDivh11,.CookwareMainDivh12
+{
+  font-weight: 100;
+  text-align: center;
+  margin-top: 5%;
+}
+.CookwareMainDivSubDiv1h41
+{
+  text-transform: uppercase;
+  margin-top: 10%;
+  font-size:large;
+  letter-spacing: 3px;
+}
+.CookwareMainDivSubDiv1p1,.CookwareMainDivSubDiv1p2
+{
+  margin-top: 5%;
+  word-spacing: 5px;
+  font-weight: 300;
+}
+.CookwareMainDivSubDiv1
+{
+  width: 50%;
+  height: 400px;
+  margin: auto;
+}
+.CookwareMainDivSubDiv1b1 
+{
+  height: 60px;
+  width: 300px;
+  background-color: green;
+  border: 2px solid black;
+  border-radius: 16px;
+  letter-spacing: 2px;
+  margin-left: 20%;
+}
+.CookwareMainDivSubDiv1h41
+{
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+.CookwareMainDivSubDiv1 input
+{
+  width: 400px;
+  height: 30px;
+  border: 2px solid black;
+  background-color: green;
+}
+.CookwareMainDivSubDiv1b2
+{
+  width: 100px;
+  height: 50px;
+  background-color: transparent;
+  border:2px solid black;
+  margin-left: 30%;
+}
+.CookwareisSubmitted input
+{
+  width: 90%;
+  height: 50px;
+  text-align: center;
+  border: 2px solid rgb(203, 207, 211);
+}
+/* img {
+  border: 5px solid #555;
+} */
+
+.squareFrame{
+  background: url("https://mdbootstrap.com/img/new/slides/041.webp");
+  margin-left:auto;
+  margin-right:auto;
+  display:table-cell;
+  position:relative;
+  overflow:hidden;
+  width:600px;
+  height:450px;
+  box-shadow: inset 0 50px rgba(255,255,255,0.1),
+         inset 2px -15px 30px rgba(0,0,0,0.4),
+         2px 2px 5px rgba(0,0,0,0.3);
+  padding: 25px;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  vertical-align: middle;
+  text-align:center;
+}
+
+
+#background-video {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -1;
+}
+
+.squareFrame img{
+ width: 300px;
+ border-radius: 20px;
+ -webkit-border-radius: 20px;
+ -moz-border-radius: 20px;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+/* Add some content at the bottom of the video/page */
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Style the button used to pause/play the video */
+#myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
+}
+

@@ -1,0 +1,24 @@
+.main-slide{
+    padding-top: 5px;
+}
+.carousel .slider-wrapper{
+    width: 100%;
+}
+.carousel .thumb{
+    width: 5%;
+    height: 50px;
+}
+.carousel{
+    text-align: center;
+}
+.rows {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    grid-gap: 10px;
+    max-width: 900px;
+  }
+  .City {
+    width: 20rem;
+    display: grid;
+
+  }
