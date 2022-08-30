@@ -8,7 +8,7 @@ import { Outlet, Link } from "react-router-dom";
 export default function City() {
   const [cities,setUser] = useState([]);
   useEffect(()=>{ async function getData(){
-    const res = await axios.get('http://192.168.12.192:3001/api/v1/cities');
+    const res = await axios.get('http://192.168.55.192:3001/api/v1/cities');
     console.log(res.data)
     setUser(res.data);
   }
@@ -29,7 +29,7 @@ export default function City() {
       <Card.Img variant="top" src = {image} />
       <Card.Body>
       <center> 
-        <Button variant="primary"><Link to={"/priceList/?id="+item.id}>{item.title}</Link></Button>
+        <Button variant="primary"><Link to={"/priceList/"+item.id}>{item.title}</Link></Button>
       </center>
       </Card.Body>
     </Card>

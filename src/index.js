@@ -33,7 +33,7 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home/>} />
           <Route path="/details" element={<Singlepage />} />
-          <Route path="/pricelist" element={<PriceList/>} />
+          <Route path="/pricelist/:city_id" element={<PriceList/>} />
           {/* <Route path="/city" element={<city/>} /> */}
         </Route>
       </Routes>

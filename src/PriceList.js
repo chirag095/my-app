@@ -3,13 +3,13 @@ import SimpleSlider  from './MyComponets/SimpleSlider';
 import Footer  from './MyComponets/Footer';  
 import { useParams } from 'react-router-dom';
 export default function PriceList() {
-  const {id} = useParams();
-  console.log(id)
+  const {city_id} = useParams();
+  console.log(city_id)
     return (
       
   <>
   <SimpleSlider/> 
-  <p>{id}</p>
+  <p>{city_id}</p>
   <Footer/>
   </>
 );
