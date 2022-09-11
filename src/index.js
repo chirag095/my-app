@@ -24,6 +24,7 @@ import Home from "./Home";
 // import city from './city';
 // import Blogs from "./pages/Blogs";
 import PriceList from "./PriceList";
+import Highlight from './Highlights';
 // import NoPage from "./pages/NoPage";
 
 export default function App() {
@@ -32,8 +33,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home/>} />
-          <Route path="/details" element={<Singlepage />} />
+          <Route path="/singlepage/:title" element={<Singlepage />} />
           <Route path="/pricelist/:city_id" element={<PriceList/>} />
+          <Route path="/highlights" element={<Highlight/>} />
           {/* <Route path="/city" element={<city/>} /> */}
         </Route>
       </Routes>

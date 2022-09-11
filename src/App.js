@@ -5,7 +5,7 @@ import Header from './MyComponets/Header';
 
 import SimpleSlider  from './MyComponets/SimpleSlider';
 import Footer  from './MyComponets/Footer';
-import Singlepage from './Singlepage';
+// import Singlepage from './Singlepage';
 import Project from './Project';
 import Layout from './src/MyComponets/Layout';
 // import Slider from "react-slick";

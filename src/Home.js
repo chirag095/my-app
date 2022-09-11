@@ -4,6 +4,7 @@ import Header from './MyComponets/Header';
 import SimpleSlider  from './MyComponets/SimpleSlider';
 import Project from './Project';
 import Footer  from './MyComponets/Footer';
+import Highlight from './Highlights';
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
 <>
 <Header/>
 <SimpleSlider/> 
+
 <Project/>
 <Footer/>
 </>
