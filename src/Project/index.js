@@ -1,66 +1,101 @@
-import React,{useEffect,useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import "./slide.css"
-import {  } from 'react-router-dom';
-import {Link } from "react-router-dom";
+import { } from 'react-router-dom';
+import { Link } from "react-router-dom";
+
+
+
+
+
 
 export default function City() {
-  const [cities,setUser] = useState([]);
-  useEffect(()=>{ async function getData(){
-    const res = await axios.get('http://192.168.43.7:3001/api/v1/cities');
-    console.log(res.data)
-    setUser(res.data);
-  }
-  getData();
-  },[])
+  const [cities, setUser] = useState([]);
+  useEffect(() => {
+    async function getData() {
+      const res = await axios.get('http://192.168.43.7:3001/api/v1/cities');
+      console.log(res.data)
+      setUser(res.data);
+    }
+    getData();
+  }, [])
   return (
 
-<>
-
-{
-  cities.map((item)=>{
-    var image = (item.image.service_url);
-    return(
-      
-      <section class="propertyPrice p-hot-deal" id="price">
-         <div class="container text-center hotdeals_container">
-           <h2><span>Hot Deal</span></h2>
-             <div class="row">
-            
-             <div class="owl-stage hot_detail_owl_stage"></div>
- <div class="owl-stage hot_detail_owl_stage">
- <div class="owl-item">
+   
+  <>
  
-        <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src = {image} />
-      <Card.Body>
-      <center> 
-        <Button variant="denger"><Link to={"/priceList/"+item.id}>{item.title}</Link></Button>
-      </center>
-      </Card.Body>
-    </Card>
+   <br></br> 
+   <center><h1 class="main-title">PROJECT CITY</h1></center>
+  
+   <br></br>
+  
+   <div class="row">  
+  
    
-    </div>
-
-    </div>
-    </div>
-    </div>
-    </section>
-
    
+        {
+          cities.map((item) => {
+            var image = (item.image.service_url);
+            return (
+              
+<div class="col-md-3 city-name">
+
+<div class="project-colm">
+   <div class="project-img">  
+      <strong class="new-lounch"><img src="img/New-Launch.gif"/> </strong>   
+      <img class="img-fluid" src={image}/> 
+   </div>
+   <div class="project-text">
+   
+       <Button variant="denger"><Link to={"/localities/" + item.id}>{item.title}</Link></Button>
+     
+   </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+              //               <div className='col-md-4'>
+//                 <div class="card">
+  
+  
+//   <Card style={{ width: '18rem'}}>
+//                   <Card.Img variant="top" src={image} style={{ width: '18rem' }}/>
+//                   <Card.Body>
+                    
+//                  <p> <Button variant="denger"><Link to={"/localities/" + item.id}><h1>{item.title}</h1></Link></Button></p>
+                  
+//                   </Card.Body>
+//                 </Card>
+
+// </div>
+               
+               
+                             
+//                 </div>
+     
+                
+      
+              
+
+            )
+          })
+        }
+        </div>
+      
+     
     
-
-    
-
-       
-   )
-  })
-}
-
-
-
-</>
+    </>
   );
 }
+
+

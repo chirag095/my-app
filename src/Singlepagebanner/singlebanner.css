@@ -1,0 +1,56 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media(max-width: 768px) {
+	.container.text-center.hotdeals_container {max-width: 100%;}
+    .owl-stage{width: 100%;}
+    .view-desktop { display:none; padding: 40px;}
+    .view-mobile {display:block; padding: 15px;}
+    .owl-stage .owl-item .slide .box .img-box .new-lounch {
+    position: absolute;
+    top: -30px;
+    width: 35%;
+    left: -50px;
+}
+.new-lounch11 {
+    position: absolute;
+    top: -30px;
+}
+.new-lounch11 img {
+    width: 35%;
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

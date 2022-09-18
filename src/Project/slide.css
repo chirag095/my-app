@@ -1,27 +1,5 @@
-.main-slide{
-    padding-top: 5px;
-}
-.carousel .slider-wrapper{
-    width: 100%;
-}
-.carousel .thumb{
-    width: 5%;
-    height: 50px;
-}
-.carousel{
-    text-align: center;
-}
-.rows {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-    grid-gap: 10px;
-    max-width: 900px;
-  }
-  .City {
-    width: 20rem;
-    display: grid;
 
-  }
+
   .view-desktop { display: block; padding: 15px;}
   .view-mobile {display: none; padding: 15px;}
   body{font-family:"DIN-Light"}
@@ -421,3 +399,56 @@
       .banner-offer img{position:absolute;bottom:12%;width:63%!important;left:19%!important}
       .banner-offer .box{width:100%;height:320px;background-color:#fff;padding:10px;margin-left:0;margin-bottom:0}
   }
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(108, 139, 20, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+  }
+  
+  .title {
+    color: grey;
+    font-size: 18px;
+  }
+  
+  Button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  a {
+    text-decoration: none;
+    font-size: 22px;
+    color: rgb(8, 8, 8);
+  }
+  
+  Button:hover, a:hover {
+    opacity: 10;
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
