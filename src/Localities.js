@@ -11,7 +11,7 @@ import "./card.css"
 
 
 import axios from "axios";
-export default function PriceList() {
+export default function Localities() {
   const [pro, setUser] = useState([]);
   const { locality_id } = useParams();
   console.log(locality_id)
@@ -26,7 +26,7 @@ export default function PriceList() {
         }
       })
       setUser(response.data.project);
-
+      
     }
     getData();
   }, [])
@@ -42,22 +42,30 @@ export default function PriceList() {
       <div className="row">
        {
           pro.map((item) => {
-            var image = (item.image.service_url);
+            
+            // var image = (item.image.service_url);
             return (
+              
           <div class="col-md-4 city-name">
 
                 <div class="project-colm">
                   <div class="project-img">
                     <strong class="new-lounch"><img src="img/New-Launch.gif" /> </strong>
-                    <img class="img-fluid" src={image} />
+                    <img class="img-fluid" src={item.image} />
                   </div>
                   <div class="project-text">
-                    <h2>Godrej WOODS PLUMERIA</h2>
-                    <h4>SECTOR 43 NOIDA</h4>
-                    <p> 3, 4 & 5 BHK + UTILITY APARTMENTS</p>
-                    <h5>STARTS AT ₹ 3.35 Cr* Onwards</h5>
-                    <p>PRE LAUNCH</p>
-                    <Button variant="denger"><Link to={"/Singlepage/" + item.id}>{item.title}</Link></Button>
+                    <h2>{item.title}</h2>
+                  
+                    
+                    <h4>{item.locality_title}</h4>
+                    <p>{item.assets_type}</p>
+                    <h5>{item.project_type}</h5>
+                    
+                    
+                    <p>{item.project_features}</p>
+                    <h5>{item.start_price}</h5>
+                    <p>{item.project_status}</p>
+                    <Button variant="denger"><Link to={"/" + item.slug}>{item.title}</Link></Button>
                   </div>
                 </div>
               </div>

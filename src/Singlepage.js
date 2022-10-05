@@ -6,6 +6,7 @@ import Footer from './MyComponets/Footer';
 import axios from "axios";
 import "./App.css"
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Helmet } from 'react-helmet';
 
 
 
@@ -14,7 +15,7 @@ export default function Singlepage() {
   const [flat, setData] = useState([]);
   const [img, setImage] = useState([]);
   const { id } = useParams();
-  console.log(id)
+  console.log(id,"----------")
   useEffect(() => {
     async function getData() {
       const response = await axios.post('http://192.168.43.7:3001/api/v1/projects', {
@@ -33,17 +34,40 @@ export default function Singlepage() {
     }
     getData();
   }, [])
-
-  return (
+  const [name,setName] = useState("")
+   const [email,setEmail] = useState("")
+   const [contact,setContact] = useState("")
+   
+   const query_form = async () => {
+      let res = await axios.post('http://192.168.43.7:3001/api/v1/customer/create',{
+        project_id:pro.id,
+         name:name,
+         email:email,
+         contact:contact
+         
+      }
+      )
+   }
+   
+return (
 
     <>
-
+  <Helmet>
+   
+        <title>{pro.seo_title}</title>
+        <meta name="description" content={pro.seo_description}/>
+        <meta name="keywords" content={pro.seo_keyword}/>
+        <link rel="canonical" href={pro.slug}/>
+        <meta name="theme-color" content="#008f68" />
+      
+      </Helmet>
+     
       <header id="header" class="top-bar sticky-top">
         <div class="header-first-row">
           <nav class="navbar navbar-expand-lg navbar-light ">
             <div class="container">
               <div class="mainlogo">
-                <a class="Logo" href="https://www.vecteezy.com/free-vector/real-estate-logo"><img data-src="{https://www.vecteezy.com/free-vector/real-estate-logo" src="https://static.vecteezy.com/system/resources/thumbnails/006/309/644/small/creative-real-estate-logo-design-house-logo-design-real-estate-icon-vector.jpg"
+                <a class="Logo" href=""><img data-src="{https://www.vecteezy.com/free-vector/real-estate-logo" src=""
                   class="img-fluid" alt="#" /></a>
               </div>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
@@ -83,24 +107,27 @@ export default function Singlepage() {
               <div class="form-group select-option-section">
 
               </div>
-              <div class="input-container">
-                <input class="input-field" type="text" placeholder="Name" name="usrnm" id="qSenderName" />
-              </div>
-              <div class="input-container">
-                <input class="input-field email-address" type="text" placeholder="Email" name="email" id="qEmailID" />
-              </div>
-              <div class="input-container">
-                <input class="input-field number-only" type="text" placeholder="Mobile No." name=" " id="qMobileNo" />
-              </div>
+              <div class="input-container"> 
+                  <input class="input-field" type="text" placeholder="Name" value={name}  onChange = {(e)=> setName(e.target.value)} id="qSenderName"/>
+               </div>
+               <div class="input-container"> 
+                  <input class="input-field email-address" type="text" placeholder="Email" value={email}  onChange = {(e)=> setEmail(e.target.value)} id="qEmailID"/>
+               </div>
+               <div class="input-container"> 
+                  <input class="input-field number-only" type="text" placeholder="Mobile No." value={contact}  onChange = {(e)=> setContact(e.target.value)} id="qMobileNo"/>
+               </div>
 
               <div class="frmbtn">
-                <input type="button" class="" value="SUBMIT" id="SubmitQuery" />
+                <input type="button" class="" value="SUBMIT" onClick ={query_form}id="SubmitQuery" />
                 <b class="animate-heading-2"><a href="tel:91xxxxxxxx">Call : +91-xxxxxxxxx</a></b>
               </div>
             </div>
           </div>
         </div>
+        <img class="d-block w-100" data-src={pro.image} src={pro.image} alt="image" />
       </div>
+      
+
       <section class="overview" id="Overview">
         <div class="container">
           <div class="main-title text-center">
@@ -189,7 +216,7 @@ export default function Singlepage() {
               <div class="carousel-item active">
                 <a href="https://sales.ind.in/img/image1.png" data-fancybox="group">
 
-                  <img class="d-block w-100" data-src="https://sales.ind.in/img/image1.png" src="https://sales.ind.in/img/image1.png" alt="image" />
+                  <img class="d-block w-100" data-src="https://sales.ind.in/img/image1.png" src={pro.image} alt="image" />
                 </a>
               </div>
               {
@@ -219,55 +246,130 @@ export default function Singlepage() {
           </div>
         </div>
       </section>
-      <section class="price-plan" id="price_plan">
+      {/* <section class="price-plan" id="price_plan">
 
         <div class="price-section">
           <div class="container">
             <div class="main-title text-center">
               <span> Price plan </span>
               <h2>Kohinoor Kaleido Kharadi </h2>
-            </div>
-            <div className="row">
+            </div> */}
+             
+            
+          
+         
+          <section class="price-plan" id="price_plan">
+          
+                    <div class="price-section">
+                    
+                      <div class="container">
+                      <div className="row">
+                        <div class="main-title text-center">
+                          <span> Price plan </span>
+                          <h2>Kohinoor Kaleido Kharadi </h2>
+                        </div>
+          
               {
                 flat.map((item) => {
                   return (
+                    
+                   
                     <div className="col-md-4">
-                      <div class="price-box">
-                        <ul class="price-card-listing">
-                          <li class="price-item">
-                            <div class="typology">
+                        <div class="price-box">
+                          <ul class="price-card-listing">
+                            <li class="price-item">
+                              <div class="typology">
+                                
+                                <span>2 BHK – Premium</span>
+                              </div>
+                              <div class="area">
+                                <span>Carpet Area</span>
+                                696 Sq ft
+                              </div>
+                              <div class="pricing">
+                                <span>Price</span>
+                                Rs 64 Lacs*
+                              </div>
+                              <div class="btm-pr-btn">
+                                <button class="btn btn-block btn-primary" data-toggle="modal" data-target="PriceSection">View</button>
+                              </div>
+                            </li>
+                            
+                            
+                           
+              
+                          </ul>
+                        </div>
+                        </div>
+                    
+                   
+                   
+                 
+                    
+                  
+                   
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    // <div className="col-md-4">
+                    //   <div class="price-box">
+                    //     <ul class="price-card-listing">
+                    //       <li class="price-item">
+                    //         <div class="typology">
 
-                              <span>{item.title}</span>
-                            </div>
-                            <div class="area">
-                              <span>Carpet Area</span>
-                              {item.carpet_area}
-                            </div>
-                            <div class="pricing">
-                              <span>Price</span>
-                              {item.price}
-                            </div>
-                            <div class="btm-pr-btn">
-                              <button class="btn btn-block btn-primary" data-toggle="modal" data-target="PriceSection">View</button>
-                            </div>
-                          </li>
+                    //           <span>{item.title}</span>
+                    //         </div>
+                    //         <div class="area">
+                    //           <span>Carpet Area</span>
+                    //           {item.carpet_area}
+                    //         </div>
+                    //         <div class="pricing">
+                    //           <span>Price</span>
+                    //           {item.price}
+                    //         </div>
+                    //         <div class="btm-pr-btn">
+                    //           <button class="btn btn-block btn-primary" data-toggle="modal" data-target="PriceSection">View</button>
+                    //         </div>
+                    //       </li>
 
-                        </ul>
-                      </div>
-                    </div>
+                    //     </ul>
+                    //   </div>
+                    // </div>
                   )
                 })
               }
-            </div>
+               
+              </div>
+              </div>
+              
+              </div>
+              </section>
+              
+             
+
+            {/* </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section class="cta-video-section">
         <div class="container">
           <div class="cta-content">
             <h4>TAKE A 360 DEGREE TOUR OF THE PROJECT </h4>
-            <p>Schedule A Virtual Tour With Our Expert</p>
+            <center>Schedule A Virtual Tour With Our Expert</center>
             <button class="btn btn-primary" data-toggle="modal" data-target="Homemeeting"> Schedule A Site Visit Virtual
               Tour </button>
           </div>
@@ -317,7 +419,7 @@ export default function Singlepage() {
         <div class="container">
           <div class="cta-content">
             <h4>Receive a digital copy of our brochure and learn more about our spacious residences.</h4>
-            <p>Request A Private Visit To Our Site Office / Sales Office</p>
+            <center>Request A Private Visit To Our Site Office / Sales Office</center>
             <button class="btn btn-primary" data-toggle="modal" data-target="DownloadBrochure">DOWNLOAD BROUCHURE</button>
           </div>
         </div>
@@ -339,7 +441,7 @@ export default function Singlepage() {
             <div class="col-lg-6">
               <div class="map-box">
                 <div class="loc-map-img">
-
+                <iframe width="300" height="300" src={pro.new_title} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                 </div>
               </div>
@@ -473,7 +575,12 @@ export default function Singlepage() {
       </div>
       <Footer />
 
+      
+    
+    
     </>
+ 
 
   );
 }
+

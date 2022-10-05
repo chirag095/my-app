@@ -11,7 +11,7 @@ import Layout from "../Layout";
 
 
 import axios from "axios";
-export default function Localities() {
+export default function Location() {
   const [pro, setUser] = useState([]);
   const { city_id } = useParams();
   // console.log(city_id)
@@ -51,7 +51,7 @@ export default function Localities() {
 
                   </div>
                   <div class="project-text">
-                    <Button variant="denger"><Link to={"/pricelist/" + item.id}>{item.title}</Link></Button>
+                    <Button variant="denger"><Link to={"/localities/" + item.slug}>{item.title}</Link></Button>
 
                   </div>
                 </div>

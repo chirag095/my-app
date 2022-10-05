@@ -6,29 +6,40 @@ import { Route,Routes } from 'react-router-dom';
 import SimpleSlider  from './MyComponets/SimpleSlider';
 import Footer  from './MyComponets/Footer';
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import { Helmet } from 'react-helmet';
 // import Project from './Project';
 import Singlepage from './Singlepage';
 import Home from "./Home";
 
-import PriceList from "./PriceList";
+import Localities from "./Localities";
 import Highlight from './Highlights';
-import Localities from './Localities';
+import Location from './Location';
 import Singlepagebanner from './Singlepagebanner';
+import ChildComponent from './ChildComponent';
+import Contacts from './Contacts';
+
 
 // import Slider from "react-slick";
 function App() {
   return (
     <div ClassName='App'>
+        <Helmet>
+        <title>App Title</title>
+        <meta name="description" content="App Description" />
+        <meta name="theme-color" content="#008f68" />
+      </Helmet>
+      <ChildComponent />
   <Routes>
           <Route path="/">
           <Route index element={<Home/>} />
-          <Route path="/singlepage/:id" element={<Singlepage />} />
-          <Route path="/pricelist/:locality_id" element={<PriceList/>} />
-          <Route path="/localities/:city_id" element={<Localities/>} />
+          <Route path="/:id" element={<Singlepage />} />
+          <Route path="/localities/:locality_id" element={<Localities/>} />
+          <Route path="/location/:city_id" element={<Location/>} />
 
           <Route path="/highlights" element={<Highlight/>} />
           <Route path="/singlepagebanner" element={<Singlepagebanner/>} />
+          <Route path="/contacts" element={<Contacts/>} />
+         
 
          
         </Route>

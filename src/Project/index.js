@@ -49,7 +49,7 @@ export default function City() {
    </div>
    <div class="project-text">
    
-       <Button variant="denger"><Link to={"/localities/" + item.id}>{item.title}</Link></Button>
+       <Button variant="denger"><Link to={"/location/" + item.slug}>{item.title}</Link></Button>
      
    </div>
 </div>

@@ -19,7 +19,7 @@
 @media(max-width: 768px) {
 	.container.text-center.hotdeals_container {max-width: 100%;}
     .owl-stage{width: 100%;}
-    .view-desktop { display:none; padding: 40px;}
+    .view-desktop { display:none; padding: 15px;}
     .view-mobile {display:block; padding: 15px;}
     .owl-stage .owl-item .slide .box .img-box .new-lounch {
     position: absolute;
