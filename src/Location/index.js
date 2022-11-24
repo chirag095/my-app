@@ -7,7 +7,7 @@ import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import "./allproject.css"
 import Layout from "../Layout";
-
+import { Helmet } from 'react-helmet';
 
 
 import axios from "axios";
@@ -34,6 +34,13 @@ export default function Location() {
   return (
 
     <>
+    <Helmet>
+     
+     <title>All Location | Project </title>
+     <meta name="description" content=""/>
+     <meta name="keywords" content=""/>
+    
+   </Helmet>
       <Layout/>
       <SimpleSlider />
       <div className="row">

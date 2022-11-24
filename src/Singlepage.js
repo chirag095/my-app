@@ -124,7 +124,7 @@ return (
             </div>
           </div>
         </div>
-        <img class="d-block w-100" data-src={pro.image} src={pro.image} alt="image" />
+        <img class="d-block w-100 imgsize" data-src={pro.image} src={pro.image} alt="image" />
       </div>
       
 
@@ -226,7 +226,7 @@ return (
                     <div class="carousel-item">
                       <a href={image} data-fancybox="group">
 
-                        <img class="d-block w-100" data-src={image} src={image} alt="image" />
+                        <img class="d-block w-100 caseimage" data-src={image} src={image} alt="image" />
                       </a>
                     </div>
                   )
@@ -573,6 +573,17 @@ return (
           </div>
         </div>
       </div>
+
+
+
+
+     
+
+
+
+
+
+
       <Footer />
 
       

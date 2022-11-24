@@ -6,7 +6,7 @@ export default function ChildComponent() {
     <div>
       <Helmet>
      
-        <title>hhjgjhghjgjhgjhgjhgjhgjj</title>
+        <title>Real Estate Project in All Location </title>
         <meta name="description" content=""/>
         <meta name="keywords" content=""/>
        
