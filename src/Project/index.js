@@ -15,7 +15,7 @@ export default function City() {
   const [cities, setUser] = useState([]);
   useEffect(() => {
     async function getData() {
-      const res = await axios.get('http://192.168.43.7:3001/api/v1/cities');
+      const res = await axios.get('http://3.109.132.135:3000/api/v1/cities');
       console.log(res.data)
       setUser(res.data);
     }

@@ -14,11 +14,13 @@ export default function Singlepage() {
   const [pro, setUser] = useState([]);
   const [flat, setData] = useState([]);
   const [img, setImage] = useState([]);
+  const [logo, setLogo] = useState([]);
+
   const { id } = useParams();
-  console.log(id,"----------")
+  console.log(id, "----------")
   useEffect(() => {
     async function getData() {
-      const response = await axios.post('http://192.168.43.7:3001/api/v1/projects', {
+      const response = await axios.post('http://3.109.132.135:3000/api/v1/projects', {
         id: id
       }, {
         headers: {
@@ -29,45 +31,46 @@ export default function Singlepage() {
       setUser(response.data.project);
       setData(response.data.project.flats)
       setImage(response.data.project.gallary)
-    
+      setLogo(response.data.project.logo)
+     
 
     }
     getData();
   }, [])
-  const [name,setName] = useState("")
-   const [email,setEmail] = useState("")
-   const [contact,setContact] = useState("")
-   
-   const query_form = async () => {
-      let res = await axios.post('http://192.168.43.7:3001/api/v1/customer/create',{
-        project_id:pro.id,
-         name:name,
-         email:email,
-         contact:contact
-         
-      }
-      )
-   }
-   
-return (
+  const [name, setName] = useState("")
+  const [email, setEmail] = useState("")
+  const [contact, setContact] = useState("")
+  
+  const query_form = async () => {
+    let res = await axios.post('http://3.109.132.135:3000/api/v1/customer/create', {
+      project_id: pro.id,
+      name: name,
+      email: email,
+      contact: contact
 
-    <>
-  <Helmet>
-   
-        <title>{pro.seo_title}</title>
-        <meta name="description" content={pro.seo_description}/>
-        <meta name="keywords" content={pro.seo_keyword}/>
-        <link rel="canonical" href={pro.slug}/>
-        <meta name="theme-color" content="#008f68" />
-      
-      </Helmet>
+    }
+    )
+  }
+
+  return (
      
+    <>
+      <Helmet>
+
+        <title>{pro.seo_title}</title>
+        <meta name="description" content={pro.seo_description} />
+        <meta name="keywords" content={pro.seo_keyword} />
+        <link rel="canonical" href={pro.slug} />
+        <meta name="theme-color" content="#008f68" />
+
+      </Helmet>
+
       <header id="header" class="top-bar sticky-top">
         <div class="header-first-row">
           <nav class="navbar navbar-expand-lg navbar-light ">
             <div class="container">
               <div class="mainlogo">
-                <a class="Logo" href=""><img data-src="{https://www.vecteezy.com/free-vector/real-estate-logo" src=""
+                <a class="Logo" href="#"><img data-src="{https://www.vecteezy.com/free-vector/real-estate-logo" src="{}"
                   class="img-fluid" alt="#" /></a>
               </div>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
@@ -75,7 +78,7 @@ return (
               </button>
 
               <div class="justify-content-end collapse navbar-collapse" id="collapsibleNavbar">
-                <div class="blink mx-4"><b>Possession Date : December 2024</b></div>
+                <div class="blink mx-4"><b>Possession Date : {pro.possession_date}</b></div>
                 <ul class="navbar-nav justify-content-lg-centerd">
                   <li class="nav-item"><a href="#Overview" class="nav-link">Overview</a></li>
                   <li class="nav-item"><a href="#highlight" class="nav-link">Highlight</a></li>
@@ -85,8 +88,8 @@ return (
                   <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
                   <li class="nav-item"><a href="#location" class="nav-link">Location </a></li>
                   <li class="nav-item">
-                    <div class="ph-no"><i class="icon-phone-1"></i><a class="phone_url" href="tel:"><span
-                      class="phone_no"></span></a></div>
+                    <div class="ph-no"><i class="icon-phone-1"></i><a class="phone_url" href="tel:{logo.Contact}"><span
+                      class="phone_no"></span></a>{logo.country_code}{logo.Contact}</div>
                   </li>
                 </ul>
               </div>
@@ -102,31 +105,31 @@ return (
               <h4 class="Location-heading">DELHI NCR</h4>
               <h4 class="animate-heading"><i class="fa fa-video-camera" aria-hidden="true"></i> Schedule Digital Presentation</h4>
               <h2><strong> APARTMENTS & VILLAS</strong></h2>
-              <h4>STARTS : <i class="fa fa-inr "></i>₹ 1.46 Cr* Onwards</h4>
+              <h4>STARTS : <i class="fa fa-inr "></i>₹ coming soon Cr* Onwards</h4>
               <h3><i class=" fa fa-edit"></i>GET IN TOUCH WITH US</h3>
               <div class="form-group select-option-section">
 
               </div>
-              <div class="input-container"> 
-                  <input class="input-field" type="text" placeholder="Name" value={name}  onChange = {(e)=> setName(e.target.value)} id="qSenderName"/>
-               </div>
-               <div class="input-container"> 
-                  <input class="input-field email-address" type="text" placeholder="Email" value={email}  onChange = {(e)=> setEmail(e.target.value)} id="qEmailID"/>
-               </div>
-               <div class="input-container"> 
-                  <input class="input-field number-only" type="text" placeholder="Mobile No." value={contact}  onChange = {(e)=> setContact(e.target.value)} id="qMobileNo"/>
-               </div>
+              <div class="input-container">
+                <input class="input-field" type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} id="qSenderName" />
+              </div>
+              <div class="input-container">
+                <input class="input-field email-address" type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} id="qEmailID" />
+              </div>
+              <div class="input-container">
+                <input class="input-field number-only" type="text" placeholder="Mobile No." value={contact} onChange={(e) => setContact(e.target.value)} id="qMobileNo" />
+              </div>
 
               <div class="frmbtn">
-                <input type="button" class="" value="SUBMIT" onClick ={query_form}id="SubmitQuery" />
-                <b class="animate-heading-2"><a href="tel:91xxxxxxxx">Call : +91-xxxxxxxxx</a></b>
+                <input type="button" class="" value="SUBMIT" onClick={query_form} id="SubmitQuery" />
+                <b class="animate-heading-2"><a href="tel:{logo.country_code}{logo.Contact}">Call : {logo.country_code}{logo.Contact}</a></b>
               </div>
             </div>
           </div>
         </div>
         <img class="d-block w-100 imgsize" data-src={pro.image} src={pro.image} alt="image" />
       </div>
-      
+
 
       <section class="overview" id="Overview">
         <div class="container">
@@ -200,7 +203,7 @@ return (
         <div class="container cta-box">
           <img data-src="/image/nitin.jpg" src="https://sales.ind.in/img/undraw_calling_kpbp.svg" alt="#" class="cta-img lazy" />
           <div class="cta-content">
-            <h3 class="request">REQUEST OFFICE / HOME / VIDEO PRESENTATION BY, Kohinoor Kaleido Kharadi, Mumbai</h3>
+            <h3 class="request">REQUEST OFFICE / HOME / VIDEO PRESENTATION</h3>
             <button class="btn btn-primary" data-toggle="modal" data-target="video_call">Enquire Now</button>
           </div>
         </div>
@@ -209,7 +212,7 @@ return (
         <div class="container">
           <div class="main-title text-center">
             <span> Gallery </span>
-            <h2>Kohinoor Kaleido Kharadi </h2>
+            <h2>{pro.title}</h2>
           </div>
           <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -246,124 +249,61 @@ return (
           </div>
         </div>
       </section>
-      {/* <section class="price-plan" id="price_plan">
+
+      <section class="price-plan" id="price_plan">
 
         <div class="price-section">
+
           <div class="container">
-            <div class="main-title text-center">
-              <span> Price plan </span>
-              <h2>Kohinoor Kaleido Kharadi </h2>
-            </div> */}
-             
-            
-          
-         
-          <section class="price-plan" id="price_plan">
-          
-                    <div class="price-section">
-                    
-                      <div class="container">
-                      <div className="row">
-                        <div class="main-title text-center">
-                          <span> Price plan </span>
-                          <h2>Kohinoor Kaleido Kharadi </h2>
-                        </div>
-          
+            <div className="row">
+              <div class="main-title text-center">
+                <span> Price plan </span>
+                <h2>{pro.t} </h2>
+              </div>
+
               {
                 flat.map((item) => {
                   return (
-                    
-                   
+
+
                     <div className="col-md-4">
-                        <div class="price-box">
-                          <ul class="price-card-listing">
-                            <li class="price-item">
-                              <div class="typology">
-                                
-                                <span>2 BHK – Premium</span>
-                              </div>
-                              <div class="area">
-                                <span>Carpet Area</span>
-                                696 Sq ft
-                              </div>
-                              <div class="pricing">
-                                <span>Price</span>
-                                Rs 64 Lacs*
-                              </div>
-                              <div class="btm-pr-btn">
-                                <button class="btn btn-block btn-primary" data-toggle="modal" data-target="PriceSection">View</button>
-                              </div>
-                            </li>
-                            
-                            
-                           
-              
-                          </ul>
-                        </div>
-                        </div>
-                    
-                   
-                   
-                 
-                    
-                  
-                   
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    // <div className="col-md-4">
-                    //   <div class="price-box">
-                    //     <ul class="price-card-listing">
-                    //       <li class="price-item">
-                    //         <div class="typology">
+                      <div class="price-box">
+                        <ul class="price-card-listing">
+                          <li class="price-item">
+                            <div class="typology">
 
-                    //           <span>{item.title}</span>
-                    //         </div>
-                    //         <div class="area">
-                    //           <span>Carpet Area</span>
-                    //           {item.carpet_area}
-                    //         </div>
-                    //         <div class="pricing">
-                    //           <span>Price</span>
-                    //           {item.price}
-                    //         </div>
-                    //         <div class="btm-pr-btn">
-                    //           <button class="btn btn-block btn-primary" data-toggle="modal" data-target="PriceSection">View</button>
-                    //         </div>
-                    //       </li>
+                              <span>2 BHK – Premium</span>
+                            </div>
+                            <div class="area">
+                              <span>Carpet Area</span>
+                              696 Sq ft
+                            </div>
+                            <div class="pricing">
+                              <span>Price</span>
+                              Rs 64 Lacs*
+                            </div>
+                            <div class="btm-pr-btn">
+                              <button class="btn btn-block btn-primary" data-toggle="modal" data-target="PriceSection">View</button>
+                            </div>
+                          </li>
 
-                    //     </ul>
-                    //   </div>
-                    // </div>
+
+
+
+                        </ul>
+                      </div>
+                    </div>
+
                   )
                 })
               }
-               
-              </div>
-              </div>
-              
-              </div>
-              </section>
-              
-             
 
-            {/* </div>
+            </div>
           </div>
+
         </div>
-      </section> */}
+      </section>
+
 
       <section class="cta-video-section">
         <div class="container">
@@ -382,7 +322,7 @@ return (
             <div class="f-p-rhs">
               <div class="main-title text-center">
                 <span> Floor Plan </span>
-                <h2>Kohinoor Kaleido Kharadi </h2>
+                <h2>{pro.t}</h2>
               </div>
               <ul class="flor-p-cont">
                 <li class="floor-img-cont">
@@ -429,7 +369,7 @@ return (
         <div class="container">
           <div class="main-title text-center">
             <span> Location </span>
-            <h2>Kohinoor Kaleido Kharadi </h2>
+            <h2>{pro.title}</h2>
           </div>
           <div class="map-content-box">
             <p class="loc-map-text">
@@ -441,7 +381,7 @@ return (
             <div class="col-lg-6">
               <div class="map-box">
                 <div class="loc-map-img">
-                <iframe width="300" height="300" src={pro.new_title} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <iframe width="300" height="300" src={pro.new_title} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                 </div>
               </div>
@@ -573,24 +513,13 @@ return (
           </div>
         </div>
       </div>
-
-
-
-
-     
-
-
-
-
-
-
       <Footer />
 
-      
-    
-    
+
+
+
     </>
- 
+
 
   );
 }
