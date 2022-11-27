@@ -17,7 +17,7 @@ export default function Localities() {
   console.log(locality_id)
   useEffect(() => {
     async function getData() {
-      const response = await axios.post('http://192.168.43.7:3001/api/v1/newshow/localities', {
+      const response = await axios.post('http://3.109.132.135:3000/api/v1/newshow/localities', {
         locality_id: locality_id
       }, {
         headers: {
