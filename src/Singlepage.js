@@ -272,15 +272,15 @@ export default function Singlepage() {
                           <li class="price-item">
                             <div class="typology">
 
-                              <span>2 BHK – Premium</span>
+                              <span>{item.title}</span>
                             </div>
                             <div class="area">
                               <span>Carpet Area</span>
-                              696 Sq ft
+                              {item.carpet_area}
                             </div>
                             <div class="pricing">
                               <span>Price</span>
-                              Rs 64 Lacs*
+                              {item.price}
                             </div>
                             <div class="btm-pr-btn">
                               <button class="btn btn-block btn-primary" data-toggle="modal" data-target="PriceSection">View</button>
