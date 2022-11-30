@@ -16,8 +16,8 @@ export default function City() {
   useEffect(() => {
     async function getData() {
       const res = await axios.get('http://3.109.132.135:3000/api/v1/cities');
-      console.log(res.data)
-      setUser(res.data);
+      console.log(res.data.cities)
+      setUser(res.data.cities);
     }
     getData();
   }, [])
