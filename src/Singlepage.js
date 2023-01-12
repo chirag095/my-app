@@ -4,7 +4,11 @@ import { useParams } from 'react-router-dom';
 // import { MDBFooter } from './MyComponets/Footer';
 import Footer from './MyComponets/Footer';
 import axios from "axios";
+// import ConfirmModal from "./ConfirmModal";
 import "./App.css"
+import swal from 'sweetalert';
+import Modalform from "./Modalform";
+
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Helmet } from 'react-helmet';
 
@@ -15,12 +19,13 @@ export default function Singlepage() {
   const [flat, setData] = useState([]);
   const [img, setImage] = useState([]);
   const [logo, setLogo] = useState([]);
+  const [locationamenity, setLocation] = useState([]);
 
   const { id } = useParams();
   console.log(id, "----------")
   useEffect(() => {
     async function getData() {
-      const response = await axios.post('http://3.109.132.135:3000/api/v1/projects', {
+      const response = await axios.post('https://vistaarr.in/api/v1/projects', {
         id: id
       }, {
         headers: {
@@ -32,7 +37,7 @@ export default function Singlepage() {
       setData(response.data.project.flats)
       setImage(response.data.project.gallary)
       setLogo(response.data.project.logo)
-     
+      setLocation(response.data.project.locationamenity)
 
     }
     getData();
@@ -42,11 +47,23 @@ export default function Singlepage() {
   const [contact, setContact] = useState("")
   
   const query_form = async () => {
-    let res = await axios.post('http://3.109.132.135:3000/api/v1/customer/create', {
+    let res = await axios.post('https://vistaarr.in/api/v1/customer/create', {
       project_id: pro.id,
       name: name,
       email: email,
       contact: contact
+    }).then(result => {
+      console.log(result.data)
+      swal({
+        title: "Thank You",
+        text: "Submit Success!",
+        icon: "success",
+      });
+    })
+      .catch(error => {
+        alert('service error')
+        console.log(error)
+      
 
     }
     )
@@ -55,6 +72,7 @@ export default function Singlepage() {
   return (
      
     <>
+     
       <Helmet>
 
         <title>{pro.seo_title}</title>
@@ -78,11 +96,11 @@ export default function Singlepage() {
               </button>
 
               <div class="justify-content-end collapse navbar-collapse" id="collapsibleNavbar">
-                <div class="blink mx-4"><b>Possession Date : {pro.possession_date}</b></div>
+                <div class="blink mx-4"><b>Possession: {pro.possession_date}</b></div>
                 <ul class="navbar-nav justify-content-lg-centerd">
                   <li class="nav-item"><a href="#Overview" class="nav-link">Overview</a></li>
                   <li class="nav-item"><a href="#highlight" class="nav-link">Highlight</a></li>
-                  <li class="nav-item"><a href="#Amenities" class="nav-link">Amenities</a></li>
+                  
                   <li class="nav-item"><a href="#price_plan" class="nav-link">Price Plan</a></li>
                   <li class="nav-item"><a href="#floor_plan" class="nav-link">Floor Plan</a></li>
                   <li class="nav-item"><a href="#gallery" class="nav-link">Gallery</a></li>
@@ -101,11 +119,13 @@ export default function Singlepage() {
         <div className="bg-container">
           <div class="formbox col-sm-3">
             <div class="form-box">
-              <h1>GODREJ RESIDENTIAL <span>PROJECTS</span></h1>
-              <h4 class="Location-heading">DELHI NCR</h4>
-              <h4 class="animate-heading"><i class="fa fa-video-camera" aria-hidden="true"></i> Schedule Digital Presentation</h4>
-              <h2><strong> APARTMENTS & VILLAS</strong></h2>
-              <h4>STARTS : <i class="fa fa-inr "></i>₹ coming soon Cr* Onwards</h4>
+              <h1>{pro.title}</h1>
+            
+              <h4 class="animate-heading"><i class="fa fa-video-camera" aria-hidden="true"></i> GET A FREE SITE VISIT</h4>
+              <h2><strong> {pro.project_type}</strong></h2>
+              {/* <h2><strong> {pro.amenity}</strong></h2> */}
+              <h4 class="animate-heading"><i class="fa fa-video-camera" aria-hidden="true"></i> {pro.site_Plan_content}</h4>
+              {/* <h4>{pro.site_Plan_content}<i class="fa fa-inr "></i>  </h4> */}
               <h3><i class=" fa fa-edit"></i>GET IN TOUCH WITH US</h3>
               <div class="form-group select-option-section">
 
@@ -122,6 +142,7 @@ export default function Singlepage() {
 
               <div class="frmbtn">
                 <input type="button" class="" value="SUBMIT" onClick={query_form} id="SubmitQuery" />
+                
                 <b class="animate-heading-2"><a href="tel:{logo.country_code}{logo.Contact}">Call : {logo.country_code}{logo.Contact}</a></b>
               </div>
             </div>
@@ -204,7 +225,7 @@ export default function Singlepage() {
           <img data-src="/image/nitin.jpg" src="https://sales.ind.in/img/undraw_calling_kpbp.svg" alt="#" class="cta-img lazy" />
           <div class="cta-content">
             <h3 class="request">REQUEST OFFICE / HOME / VIDEO PRESENTATION</h3>
-            <button class="btn btn-primary" data-toggle="modal" data-target="video_call">Enquire Now</button>
+            <button class="btn btn-primary" data-toggle="{Modalform}" data-target="video_call">Enquire Now</button>
           </div>
         </div>
       </section>
@@ -263,6 +284,7 @@ export default function Singlepage() {
 
               {
                 flat.map((item) => {
+                  
                   return (
 
 
@@ -283,7 +305,7 @@ export default function Singlepage() {
                               {item.price}
                             </div>
                             <div class="btm-pr-btn">
-                              <button class="btn btn-block btn-primary" data-toggle="modal" data-target="PriceSection">View</button>
+                              <button class="btn btn-block btn-primary" data-toggle="{<Modalform/>}" data-target="PriceSection">View</button>
                             </div>
                           </li>
 
@@ -360,7 +382,7 @@ export default function Singlepage() {
           <div class="cta-content">
             <h4>Receive a digital copy of our brochure and learn more about our spacious residences.</h4>
             <center>Request A Private Visit To Our Site Office / Sales Office</center>
-            <button class="btn btn-primary" data-toggle="modal" data-target="DownloadBrochure">DOWNLOAD BROUCHURE</button>
+            <button class="btn btn-primary" data-toggle="Modal" data-target="DownloadBrochure">DOWNLOAD BROUCHURE</button>
           </div>
         </div>
       </section>
@@ -386,86 +408,45 @@ export default function Singlepage() {
                 </div>
               </div>
             </div>
+      
             <div class="col-lg-6 nearby">
               <div class="location-content">
+       
                 <div class="benefit">
                   <div class="nearby-connect">
                     <div class="accordion" id="accordionExample1">
+                      
+                    {
+        locationamenity.map((item) => {
+         return (
                       <div class="accordion-item">
+
+                     
                         <h2 class="accordion-header" id="headingEleone">
                           <button class="accordion-button" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseEleone" aria-expanded="true" aria-controls="collapseEleone">
-                            Schools
+                            {item.title}
                           </button>
                         </h2>
                         <div id="collapseEleone" class="accordion-collapse collapse show" aria-labelledby="headingEleone"
                           data-bs-parent="#accordionExample1">
                           <div class="accordion-body">
                             <ul>
-                              <li>Eon Gyanankur School - 12 Min</li>
-                              <li>Euro School - 6 Min</li>
-                              <li>Phoenix World School - 14 Min</li>
-                              <li>Dhole Patil School of Excellence - 4 Min</li>
+                              <li>{item.dec1}</li>
+                              <li>{item.dec2}</li>
+                              <li>{item.dec3}</li>
+                              <li>{item.dec4}</li>
                             </ul>
                           </div>
                         </div>
                       </div>
-                      <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwovel">
-                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapsTwovel" aria-expanded="false" aria-controls="collapsTwovel">
-                            Employment Hubs
-                          </button>
-                        </h2>
-                        <div id="collapsTwovel" class="accordion-collapse collapse" aria-labelledby="headingTwovel"
-                          data-bs-parent="#accordionExample1">
-                          <div class="accordion-body">
-                            <ul>
-                              <li>Eon IT Park - 12 Min</li>
-                              <li>World Trade Center - 14 Min</li>
-                              <li>MIDC Knowledge Park - 10 Min</li>
-                              <li>Zensar - 8 Min</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingFourteen">
-                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">
-                            Healthcare
-                          </button>
-                        </h2>
-                        <div id="collapseFourteen" class="accordion-collapse collapse" aria-labelledby="headingFourteen"
-                          data-bs-parent="#accordionExample1">
-                          <div class="accordion-body">
-                            <ul>
-                              <li>Columbia Asia Hospital - 12 Min</li>
-                              <li>Rising Medicare - 16 Min</li>
-                              <li>Balaji Hospital - 6 Min</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
+                      
+                      )
+    })
+  }
+    
 
-                      <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingfifteen">
-                          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapsefifteen" aria-expanded="false" aria-controls="collapsefifteen">
-                            Malls & Entertainment
-                          </button>
-                        </h2>
-                        <div id="collapsefifteen" class="accordion-collapse collapse" aria-labelledby="headingfifteen"
-                          data-bs-parent="#accordionExample1">
-                          <div class="accordion-body">
-                            <ul>
-                              <li>Phoenix Market City – 12 Min</li>
-                              <li>Bollywood E-Square - 12 Min</li>
-                              <li>PVR Cinemas - 10 Min</li>
-                            </ul>
-                          </div>
-                        </div>
-                      </div>
+                      
                     </div>
                   </div>
                 </div>
@@ -477,8 +458,7 @@ export default function Singlepage() {
           </div>
         </div>
       </section>
-
-      <div class="modal fade form">
+     <div class="modal fade form">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
 

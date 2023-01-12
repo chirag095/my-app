@@ -13,11 +13,12 @@ import { Helmet } from 'react-helmet';
 import axios from "axios";
 export default function Location() {
   const [pro, setUser] = useState([]);
+  const [local, setLocal] = useState([]);
   const { city_id } = useParams();
   console.log(city_id)
   useEffect(() => {
     async function getData() {
-      const response = await axios.post('http://3.109.132.135:3000/api/v1/newshow/cities', {
+      const response = await axios.post('https://vistaarr.in/api/v1/newshow/cities', {
         city_id: city_id
       }, {
         headers: {
@@ -26,6 +27,7 @@ export default function Location() {
         }
       })
       setUser(response.data.locality);
+      setLocal(response.data.locality.data);
 
     }
     getData();
@@ -36,16 +38,17 @@ export default function Location() {
     <>
     <Helmet>
      
-     <title>All Location | Project </title>
-     <meta name="description" content=""/>
-     <meta name="keywords" content=""/>
+    <title>{pro.seoTitle}</title>
+        <meta name="description" content={pro.seo_description} />
+        <meta name="keywords" content={pro.seo_keyword} />
+        <link rel="canonical" href={pro.slug} />
     
    </Helmet>
       <Layout/>
       <SimpleSlider />
       <div className="row">
         {
-          pro.map((item) => {
+          local.map((item) => {
             // var image = (item.image.service_url);
             return (
 

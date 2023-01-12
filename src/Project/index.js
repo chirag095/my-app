@@ -5,6 +5,7 @@ import Card from 'react-bootstrap/Card';
 import "./slide.css"
 import { } from 'react-router-dom';
 import { Link } from "react-router-dom";
+// import { Helmet } from 'react-helmet';
 
 
 
@@ -15,7 +16,7 @@ export default function City() {
   const [cities, setUser] = useState([]);
   useEffect(() => {
     async function getData() {
-      const res = await axios.get('http://3.109.132.135:3000/api/v1/cities');
+      const res = await axios.get('https://vistaarr.in/api/v1/cities');
       console.log(res.data.cities)
       setUser(res.data.cities);
     }
@@ -25,6 +26,7 @@ export default function City() {
 
    
   <>
+ 
  
    <br></br> 
    <center><h1 class="main-title">PROJECT CITY</h1></center>

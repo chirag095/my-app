@@ -7,17 +7,18 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
 import "./card.css"
-
+import { Helmet } from 'react-helmet';
 
 
 import axios from "axios";
 export default function Localities() {
   const [pro, setUser] = useState([]);
+  const [proLoc, setLocal] = useState([]);
   const { locality_id } = useParams();
   console.log(locality_id)
   useEffect(() => {
     async function getData() {
-      const response = await axios.post('http://3.109.132.135:3000/api/v1/newshow/localities', {
+      const response = await axios.post('https://vistaarr.in/api/v1/newshow/localities', {
         locality_id: locality_id
       }, {
         headers: {
@@ -26,6 +27,7 @@ export default function Localities() {
         }
       })
       setUser(response.data.project);
+      setLocal(response.data.project.data);
       
     }
     getData();
@@ -34,6 +36,12 @@ export default function Localities() {
   return (
 
     <>
+     <Helmet>
+     <title>{pro.seoTitle}</title>
+        <meta name="description" content={pro.seo_description} />
+        <meta name="keywords" content={pro.seo_keyword} />
+        <link rel="canonical" href={pro.slug} />
+      </Helmet>
       <Layout/>
       <SimpleSlider />
       <br></br>
@@ -41,7 +49,7 @@ export default function Localities() {
       <br></br>
       <div className="row">
        {
-          pro.map((item) => {
+          proLoc.map((item) => {
             
             // var image = (item.image.service_url);
             return (

@@ -17,7 +17,8 @@ import Location from './Location';
 import Singlepagebanner from './Singlepagebanner';
 import ChildComponent from './ChildComponent';
 import Contacts from './Contacts';
-
+import ConfirmModal from './ConfirmModal';
+import Modalform from "./Modalform";
 
 // import Slider from "react-slick";
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <meta name="description" content="App Description" />
         <meta name="theme-color" content="#008f68" />
       </Helmet>
+     
       <ChildComponent />
   <Routes>
           <Route path="/">
@@ -39,6 +41,8 @@ function App() {
           <Route path="/highlights" element={<Highlight/>} />
           <Route path="/singlepagebanner" element={<Singlepagebanner/>} />
           <Route path="/contacts" element={<Contacts/>} />
+          <Route path="/ConfirmModal" element={<ConfirmModal/>} />
+          <Route path="/Modalform" element={<Modalform/>} />
          
 
          
