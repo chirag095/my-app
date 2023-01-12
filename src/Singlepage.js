@@ -25,7 +25,7 @@ export default function Singlepage() {
   console.log(id, "----------")
   useEffect(() => {
     async function getData() {
-      const response = await axios.post('https://vistaarr.in/api/v1/projects', {
+      const response = await axios.post('https://vistaarr.in:3000/api/v1/projects', {
         id: id
       }, {
         headers: {
@@ -47,7 +47,7 @@ export default function Singlepage() {
   const [contact, setContact] = useState("")
   
   const query_form = async () => {
-    let res = await axios.post('https://vistaarr.in/api/v1/customer/create', {
+    let res = await axios.post('https://vistaarr.in:3000/api/v1/customer/create', {
       project_id: pro.id,
       name: name,
       email: email,

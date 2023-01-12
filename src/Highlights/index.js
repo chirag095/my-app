@@ -7,7 +7,7 @@ import axios from 'axios'
 export default function Highlights() {
   const [highlight,setUser] = useState([]);
   useEffect(()=>{ async function getData(){
-    const res = await axios.get('https://vistaarr.in/api/v1/highlights');
+    const res = await axios.get('https://vistaarr.in:3000/api/v1/highlights');
     console.log(res.data)
     setUser(res.data.highlights);
   }

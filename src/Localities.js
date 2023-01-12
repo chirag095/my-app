@@ -18,7 +18,7 @@ export default function Localities() {
   console.log(locality_id)
   useEffect(() => {
     async function getData() {
-      const response = await axios.post('https://vistaarr.in/api/v1/newshow/localities', {
+      const response = await axios.post('https://vistaarr.in:3000/api/v1/newshow/localities', {
         locality_id: locality_id
       }, {
         headers: {

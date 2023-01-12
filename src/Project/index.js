@@ -16,7 +16,7 @@ export default function City() {
   const [cities, setUser] = useState([]);
   useEffect(() => {
     async function getData() {
-      const res = await axios.get('https://vistaarr.in/api/v1/cities');
+      const res = await axios.get('https://vistaarr.in:3000/api/v1/cities');
       console.log(res.data.cities)
       setUser(res.data.cities);
     }

@@ -18,7 +18,7 @@ export default function Location() {
   console.log(city_id)
   useEffect(() => {
     async function getData() {
-      const response = await axios.post('https://vistaarr.in/api/v1/newshow/cities', {
+      const response = await axios.post('https://vistaarr.in:3000/api/v1/newshow/cities', {
         city_id: city_id
       }, {
         headers: {
