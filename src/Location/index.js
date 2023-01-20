@@ -1,3 +1,4 @@
+// import React from "react"; 
 import React, { useEffect, useState } from "react";
 import SimpleSlider from '../MyComponets/SimpleSlider';
 import Footer from '../MyComponets/Footer';
@@ -5,7 +6,7 @@ import { useParams } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Link } from "react-router-dom";
-import "./allproject.css"
+// import "./allproject.css"
 import Layout from "../Layout";
 import { Helmet } from 'react-helmet';
 
@@ -61,7 +62,7 @@ export default function Location() {
 
                   </div>
                   <div class="project-text">
-                    <Button variant="denger"><Link to={"/localities/" + item.slug}>{item.title}</Link></Button>
+                    <Button variant="denger"><Link to={`/${city_id}/${item.slug}`}>{item.title}</Link></Button>
 
                   </div>
                 </div>

@@ -6,9 +6,10 @@ import Footer from './MyComponets/Footer';
 import axios from "axios";
 // import ConfirmModal from "./ConfirmModal";
 import "./App.css"
-import swal from 'sweetalert';
-import Modalform from "./Modalform";
 
+import swal from 'sweetalert';
+
+import { Modal,Button} from "react-bootstrap";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Helmet } from 'react-helmet';
 
@@ -20,7 +21,10 @@ export default function Singlepage() {
   const [img, setImage] = useState([]);
   const [logo, setLogo] = useState([]);
   const [locationamenity, setLocation] = useState([]);
+  const [show, setShow] = useState(false);
 
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const { id } = useParams();
   console.log(id, "----------")
   useEffect(() => {
@@ -45,13 +49,14 @@ export default function Singlepage() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [contact, setContact] = useState("")
-  
+
   const query_form = async () => {
     let res = await axios.post('https://vistaarr.in:3000/api/v1/customer/create', {
       project_id: pro.id,
       name: name,
       email: email,
       contact: contact
+      
     }).then(result => {
       console.log(result.data)
       swal({
@@ -150,7 +155,8 @@ export default function Singlepage() {
         </div>
         <img class="d-block w-100 imgsize" data-src={pro.image} src={pro.image} alt="image" />
       </div>
-
+    
+   
 
       <section class="overview" id="Overview">
         <div class="container">
@@ -225,7 +231,9 @@ export default function Singlepage() {
           <img data-src="/image/nitin.jpg" src="https://sales.ind.in/img/undraw_calling_kpbp.svg" alt="#" class="cta-img lazy" />
           <div class="cta-content">
             <h3 class="request">REQUEST OFFICE / HOME / VIDEO PRESENTATION</h3>
-            <button class="btn btn-primary" data-toggle="{Modalform}" data-target="video_call">Enquire Now</button>
+            <Button variant="primary" onClick={handleShow}>
+            Enquire Now
+            </Button>
           </div>
         </div>
       </section>
@@ -305,7 +313,9 @@ export default function Singlepage() {
                               {item.price}
                             </div>
                             <div class="btm-pr-btn">
-                              <button class="btn btn-block btn-primary" data-toggle="{<Modalform/>}" data-target="PriceSection">View</button>
+                            <Button variant="primary" onClick={handleShow}>
+                View
+            </Button>
                             </div>
                           </li>
 
@@ -332,8 +342,11 @@ export default function Singlepage() {
           <div class="cta-content">
             <h4>TAKE A 360 DEGREE TOUR OF THE PROJECT </h4>
             <center>Schedule A Virtual Tour With Our Expert</center>
-            <button class="btn btn-primary" data-toggle="modal" data-target="Homemeeting"> Schedule A Site Visit Virtual
-              Tour </button>
+            <Button variant="primary" onClick={handleShow}>
+            Schedule A Site Visit Virtual
+              Tour
+            </Button>
+              
           </div>
         </div>
       </section>
@@ -351,7 +364,9 @@ export default function Singlepage() {
                   <div class="image-container" data-toggle="modal" data-target="FloorPlan">
                     <img data-src="https://sales.ind.in/img/floor-plan.png" src="https://sales.ind.in/img/floor-plan.png" class="img-fluid lazy" alt="Responsive image" />
                     <div class="overlay-div">
-                      <button class="btn btn-defult">FLOOR PLAN</button>
+                    <Button variant="primary" onClick={handleShow}>
+                    FLOOR PLAN
+            </Button>
                     </div>
                   </div>
                 </li>
@@ -359,7 +374,9 @@ export default function Singlepage() {
                   <div class="image-container" data-toggle="modal" data-target="FloorPlan">
                     <img data-src="img/fp/fp2.webp" src="https://sales.ind.in/img/floor-plan.png" class="img-fluid lazy" alt="Responsive image" />
                     <div class="overlay-div">
-                      <button class="btn btn-defult">FLOOR PLAN</button>
+                    <Button variant="primary" onClick={handleShow}>
+                    FLOOR PLAN
+            </Button>
                     </div>
                   </div>
                 </li>
@@ -367,7 +384,9 @@ export default function Singlepage() {
                   <div class="image-container" data-toggle="modal" data-target="FloorPlan">
                     <img data-src="img/fp/fp3.webp" src="https://sales.ind.in/img/floor-plan.png" class="img-fluid lazy" alt="Responsive image" />
                     <div class="overlay-div">
-                      <button class="btn btn-defult">FLOOR PLAN</button>
+                    <Button variant="primary" onClick={handleShow}>
+                    FLOOR PLAN
+            </Button>
                     </div>
                   </div>
                 </li>
@@ -376,13 +395,15 @@ export default function Singlepage() {
           </div>
         </div>
       </section>
-
+    
       <section class="dowload-brochure ">
         <div class="container">
           <div class="cta-content">
             <h4>Receive a digital copy of our brochure and learn more about our spacious residences.</h4>
             <center>Request A Private Visit To Our Site Office / Sales Office</center>
-            <button class="btn btn-primary" data-toggle="Modal" data-target="DownloadBrochure">DOWNLOAD BROUCHURE</button>
+            <Button variant="primary" onClick={handleShow}>
+            DOWNLOAD BROUCHURE
+            </Button> 
           </div>
         </div>
       </section>
@@ -451,20 +472,23 @@ export default function Singlepage() {
                   </div>
                 </div>
               </div>
-              <button class="btn btn-primary site-visit" data-toggle="modal" data-target="Location">Get Site
-                Visit</button>
+              <Button variant="primary" onClick={handleShow}>
+              Get Site
+                Visit
+            </Button>
             </div>
 
           </div>
         </div>
       </section>
-     <div class="modal fade form">
-        <div class="modal-dialog modal-dialog-centered">
+      <Modal show={show} onHide={handleClose}>
+     
+        
           <div class="modal-content">
 
             <div class="modal-header">
-              <h4 class="modal-title">Kohinoor Kaleido Kharadi </h4>
-              <button type="button" class="btn-close" data-bs-dismiss="modal">&times;</button>
+              <h4 class="modal-title">{pro.title} Site Visit </h4>
+              <button type="button" class="btn-close" onClick={handleClose} data-bs-dismiss="modal">&times;</button>
             </div>
 
             <div class="modal-body">
@@ -472,27 +496,32 @@ export default function Singlepage() {
                 <div class="form-group">
                   <div class="name-cont">
                     <input type="text" id="ModalForm_Name" class="form-control" placeholder="Your Name*"
-                      pattern="[a-zA-Z ]{4,35}" onpaste="return false;" oncopy="return false;"
+                     value={name} onChange={(e) => setName(e.target.value)} pattern="[a-zA-Z ]{4,35}" onpaste="return false;" oncopy="return false;"
                       onkeypress="return OnlyAlphaValidationWithSpace(event)" required />
                   </div>
-                  <div class="contry-code-mb-number">
-                    <div class="country-code">
-                      <select name="cars" id="ModalForm_CountryCode">
-                      </select>
-                    </div>
-                    <div class="m-number-cont">
-                      <input id="ModalForm_Number" class="form-control" placeholder="Mobile No*" type="tel"
-                        pattern="[0-9]{10}$" onpaste="return false;" oncopy="return false;"
-                        onkeypress="return OnlyNumberValidationDash(event)" maxlength="10" required />
-                    </div>
+                 
+                  <div class="name-cont">
+                    <input type="text" id="ModalForm_Name" class="form-control" placeholder="Your Email*"
+                     value={email} onChange={(e) => setEmail(e.target.value)} pattern="[a-zA-Z ]{4,35}" onpaste="return false;" oncopy="return false;"
+                      onkeypress="return OnlyAlphaValidationWithSpace(event)" required />
                   </div>
-                  <button value="Enquire Now" class="register-submit btn btn-primary" type="submit">Submit</button>
+
+                  <div class="name-cont">
+                    <input type="text" id="ModalForm_Name" class="form-control" placeholder="Your Number*"
+                    value={contact} onChange={(e) => setContact(e.target.value)} pattern="{4,35}" onpaste="return false;" oncopy="return false;"
+                      onkeypress="return OnlyAlphaValidationWithSpace(event)" required />
+                  </div>
+
+                  
+                  <button value="Enquire Now" class="register-submit btn btn-primary" onClick={query_form} type="submit">Submit</button>
                 </div>
+               
               </form>
             </div>
           </div>
-        </div>
-      </div>
+         
+     
+      </Modal>
       <Footer />
 
 

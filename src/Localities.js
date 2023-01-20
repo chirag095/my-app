@@ -14,7 +14,7 @@ import axios from "axios";
 export default function Localities() {
   const [pro, setUser] = useState([]);
   const [proLoc, setLocal] = useState([]);
-  const { locality_id } = useParams();
+  const { locality_id, city_id } = useParams();
   console.log(locality_id)
   useEffect(() => {
     async function getData() {
@@ -33,9 +33,11 @@ export default function Localities() {
     getData();
   }, [])
 
+if(!city_id && !locality_id) return null
   return (
 
     <>
+
      <Helmet>
      <title>{pro.seoTitle}</title>
         <meta name="description" content={pro.seo_description} />
@@ -43,6 +45,7 @@ export default function Localities() {
         <link rel="canonical" href={pro.slug} />
       </Helmet>
       <Layout/>
+       
       <SimpleSlider />
       <br></br>
       <center> <h1>City Location Project</h1></center>
@@ -73,10 +76,11 @@ export default function Localities() {
                     <p>{item.project_features}</p>
                     <h5>{item.start_price}</h5>
                     <p>{item.project_status}</p>
-                    <Button variant="denger"><Link to={"/" + item.slug}>{item.title}</Link></Button>
+                    <Button variant="denger"><Link to={`/${city_id}/${locality_id}/${item.slug}`}>{item.title}</Link></Button>
                   </div>
                 </div>
               </div>
+
 
 
 

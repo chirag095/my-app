@@ -410,6 +410,7 @@ th, td {
 }
 
 .floor-plan .flor-p-cont {
+  margin-right: 25px;
   text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -474,6 +475,7 @@ th, td {
 }
 
 .price-section .price-card-listing {
+  
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -486,6 +488,7 @@ th, td {
 }
 
 .price-section .typology {
+  
   text-transform: uppercase;
   font-weight: 600;
   font-size: 24px;
@@ -506,14 +509,17 @@ th, td {
 }
 
 .price-section .other-project {
+  
   margin-top: 30px;
 }
 
 .price-section .pst {
+  
   color: #ef3e2e;
 }
 
 .price-section .price-item {
+  margin-right: 25px;
   padding: 20px;
   width: 100%;
   text-align: center;
@@ -943,7 +949,8 @@ h2 {
 }
 
 section {
-  padding-top: 80px;
+  
+  padding-top: 90px;
 }
 
 .close:not(:disabled):not(.disabled):focus,
@@ -1025,12 +1032,14 @@ section {
 
 /* highligh */
 .highlight-points {
+  
   display: inline-block;
   width: 100%;
   text-align: center;
 }
 
 .highlight-points ul {
+  margin-right: 25px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1211,6 +1220,7 @@ section {
   .banner-form-part {
     max-width: 540px;
     margin: 0 auto;
+    
   }
   .price-hd,
   .price-details span {
@@ -1221,6 +1231,7 @@ section {
 @media (min-width: 769px) {
   .banner-box .dtp-view-img {
     display: block;
+    
   }
   .banner-box .mbl-view-img {
     display: none;
@@ -1230,14 +1241,17 @@ section {
 @media (min-width: 992px) {
   .top-bar .header-first-row .ph-no {
     margin-top: 8px;
+    
   }
   .banner-box .banner-img {
     width: 100%;
+    
   }
   .banner-box .banner-form-part {
     border: 4px solid #ef3e2e;
     border-radius: 5px;
     position: absolute;
+    
     top: 50px;
     right: 50px;
     height: auto;
@@ -1251,6 +1265,7 @@ section {
     background: rgba(0, 0, 0, 0.3);
   }
   .highlight-points ul li {
+    
     width: 33.33%;
     padding: 20px 10px;
   }
@@ -1265,6 +1280,7 @@ section {
   }
   .cta-section .cta-img {
     width: 320px;
+    
     display: inline-block;
     vertical-align: middle;
   }
@@ -1308,6 +1324,7 @@ overflow-x: hidden;
 {
   /* background-image: url(https://sales.ind.in/img/image1.png) ; */
   width: 100%;
+  
   height: 100vh;
   background-size: cover;
   position: relative;

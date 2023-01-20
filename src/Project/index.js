@@ -5,7 +5,7 @@ import Card from 'react-bootstrap/Card';
 import "./slide.css"
 import { } from 'react-router-dom';
 import { Link } from "react-router-dom";
-// import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet';
 
 
 
@@ -51,7 +51,7 @@ export default function City() {
    </div>
    <div class="project-text">
    
-       <Button variant="denger"><Link to={"/location/" + item.slug}>{item.title}</Link></Button>
+       <Button variant="denger"><Link to={"/"+item.slug}>{item.title}</Link></Button>
      
    </div>
 </div>
