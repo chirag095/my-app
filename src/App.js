@@ -1,3 +1,4 @@
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,6 +15,8 @@ import Highlight from './Highlights';
 import Location from './Location';
 import Singlepagebanner from './Singlepagebanner';
 import ChildComponent from './ChildComponent'
+import sitemapRoutes from './sitemap-routes';
+import sitemapGenerator from './sitemap-generator';
 
 
 
@@ -42,8 +45,8 @@ function App() {
 
           <Route path="/singlepagebanner" element={<Singlepagebanner/>} />
           <Route path="/highlights" element={<Highlight/>} />
-        
-         
+          <Route path='/sitemap-generator'element={<sitemapGenerator/>}/>
+          <Route path='/sitemap-routes'element={<sitemapRoutes/>}/>
         </Routes>
        
 

@@ -69,7 +69,7 @@ if(!city_id && !locality_id) return null
                   
                     
                     <h4>{item.locality_title}</h4>
-                    <p>{item.assets_type}</p>
+                    <p>{item.builder_title}</p>
                     <h5>{item.project_type}</h5>
                     
                     
